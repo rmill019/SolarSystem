@@ -14,7 +14,7 @@ public class Orbit : MonoBehaviour {
 
 	void Start () {
 		daysToOrbit = (float)GameManager.daysToOrbit [(int)e_Planet];
-		print (gameObject.name + " e_planet: " + GameManager.daysToOrbit [(int)e_Planet]);
+		//print (gameObject.name + " e_planet: " + GameManager.daysToOrbit [(int)e_Planet]);
 		//print (this.gameObject.name + ": " + daysToOrbit);
 		speed = (2 * Mathf.PI) / daysToOrbit;
 		angle = Random.Range (0, 360);

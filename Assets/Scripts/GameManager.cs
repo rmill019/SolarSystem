@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 	
 	public float					timeToChoose;
 	public bool						b_ActivateTimer;
+	public bool						b_AwaitingInput = true;
 
 	void Awake () {
 		if (!S)
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour {
 
 	void Update () {
 
-		if (Input.GetKeyDown(KeyCode.KeypadEnter))
+		if (Input.GetKeyDown(KeyCode.KeypadEnter) && UIManager.S.missionStartPanel.activeInHierarchy)
 		{
 			UIManager.S.missionStartPanel.SetActive (false);
 			DisplayTargetPlanet();
@@ -39,7 +40,10 @@ public class GameManager : MonoBehaviour {
 			b_ActivateTimer = true;
 		}
 
-		RecieveInput();
+		if (b_ActivateTimer  && b_AwaitingInput)
+		{
+			RecieveInput();
+		}
 	}
 
 	void DisplayTargetPlanet ()
@@ -61,17 +65,17 @@ public class GameManager : MonoBehaviour {
 		UIManager.S.targetPlanetText.text += planet;
 	}
 
-	int RecieveInput ()
+	// Grab the planet that the player has chosen to go to
+	void RecieveInput ()
 	{
 		int input = 0;
-		// If the timer is active that means that the player must select a planet to travel to
-		if (b_ActivateTimer)
-		{
+
 			if (Input.GetKeyDown(KeyCode.Keypad1))
 			{
 				input = 1;
 				b_ActivateTimer = false;
 				player.e_PlayerState = E_PlayerState.e_Moving;
+				b_AwaitingInput = false;
 				print ("Player chose: Mercury");
 			}
 			else if (Input.GetKeyDown(KeyCode.Keypad2))
@@ -79,6 +83,7 @@ public class GameManager : MonoBehaviour {
 				input = 2;
 				b_ActivateTimer = false;
 				player.e_PlayerState = E_PlayerState.e_Moving;
+				b_AwaitingInput = false;
 				print ("Player chose: Venus");
 			}
 			else if (Input.GetKeyDown(KeyCode.Keypad3))
@@ -86,6 +91,7 @@ public class GameManager : MonoBehaviour {
 				input = 3;
 				b_ActivateTimer = false;
 				player.e_PlayerState = E_PlayerState.e_Moving;
+				b_AwaitingInput = false;
 				print ("Player chose: Earth");
 			}
 			else if (Input.GetKeyDown(KeyCode.Keypad4))
@@ -93,6 +99,7 @@ public class GameManager : MonoBehaviour {
 				input = 4;
 				b_ActivateTimer = false;
 				player.e_PlayerState = E_PlayerState.e_Moving;
+				b_AwaitingInput = false;
 				print ("Player chose: Mars");
 			}
 			else if (Input.GetKeyDown(KeyCode.Keypad5))
@@ -100,6 +107,7 @@ public class GameManager : MonoBehaviour {
 				input = 5;
 				b_ActivateTimer = false;
 				player.e_PlayerState = E_PlayerState.e_Moving;
+				b_AwaitingInput = false;
 				print ("Player chose: Jupiter");
 			}
 			else if (Input.GetKeyDown(KeyCode.Keypad6))
@@ -107,6 +115,7 @@ public class GameManager : MonoBehaviour {
 				input = 6;
 				b_ActivateTimer = false;
 				player.e_PlayerState = E_PlayerState.e_Moving;
+				b_AwaitingInput = false;
 				print ("Player chose: Saturn");
 			}
 			else if (Input.GetKeyDown(KeyCode.Keypad7))
@@ -114,6 +123,7 @@ public class GameManager : MonoBehaviour {
 				input = 7;
 				b_ActivateTimer = false;
 				player.e_PlayerState = E_PlayerState.e_Moving;
+				b_AwaitingInput = false;
 				print ("Player chose: Uranus");
 			}
 			else if (Input.GetKeyDown(KeyCode.Keypad8))
@@ -121,10 +131,9 @@ public class GameManager : MonoBehaviour {
 				input = 8;
 				b_ActivateTimer = false;
 				player.e_PlayerState = E_PlayerState.e_Moving;
+				b_AwaitingInput = false;
 				print ("Player chose: Neptune");
 			}
-		}
-		return input;
 	}
 
 
