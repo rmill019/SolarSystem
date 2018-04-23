@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour {
 	public Slider					fuelSlider;
 	public Slider					timerSlider;
 	public Text						targetPlanetText;
-	public GameObject				missionStartPanel;
+	public Text						missionStartText;
 
 	void Awake () {
 		if (!S)

@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour {
 	public static GameManager		S;
 	public PlayerController			player;
 	private int						previousPlanetIndex;
+	public int						planetInput;
 	// This array holds the number of days that it takes planets 1 - 8 to orbit the sun
-	public static int[] 			daysToOrbit = new int[] { 8, 23, 37, 69, 433, 1075, 3068, 6019}; //{ 88, 225, 365, 687, 4333, 10756, 30687, 60190}
+	public static int[] 			daysToOrbit = new int[] { 8, 23, 37, 69, 433, 10, 10, 10}; //{ 88, 225, 365, 687, 4333, 10756, 30687, 60190}
 	public static string[]			planets = new string[8] { "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" };
 	public Transform				Sun;
 
@@ -32,9 +33,9 @@ public class GameManager : MonoBehaviour {
 
 	void Update () {
 
-		if (Input.GetKeyDown(KeyCode.KeypadEnter) && UIManager.S.missionStartPanel.activeInHierarchy)
+		if (Input.GetKeyDown(KeyCode.KeypadEnter) && UIManager.S.missionStartText.gameObject.activeInHierarchy)
 		{
-			UIManager.S.missionStartPanel.SetActive (false);
+			UIManager.S.missionStartText.gameObject.SetActive (false);
 			DisplayTargetPlanet();
 			UIManager.S.targetPlanetText.gameObject.SetActive (true);
 			b_ActivateTimer = true;
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour {
 
 		if (b_ActivateTimer  && b_AwaitingInput)
 		{
-			RecieveInput();
+			planetInput = RecieveInput();
 		}
 	}
 
@@ -66,7 +67,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	// Grab the planet that the player has chosen to go to
-	void RecieveInput ()
+	int RecieveInput ()
 	{
 		int input = 0;
 
@@ -134,6 +135,7 @@ public class GameManager : MonoBehaviour {
 				b_AwaitingInput = false;
 				print ("Player chose: Neptune");
 			}
+		return input;
 	}
 
 

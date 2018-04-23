@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 		float newAngle = phase * angle;
 
 		
-		Vector3 pos = new Vector3 (transform.position.x, transform.position.y + newHeight, transform.position.z);
+		Vector3 pos = new Vector3 (transform.position.x - newLateral, transform.position.y + newHeight, transform.position.z);
 		transform.position = pos;
 		transform.localEulerAngles = new Vector3 (transform.localEulerAngles.x - newAngle, transform.localEulerAngles.y, transform.localEulerAngles.z + newAngle);
 	}
