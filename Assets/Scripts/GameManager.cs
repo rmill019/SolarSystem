@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public enum E_Planets {e_Mercury = 1, e_Venus, e_Earth, e_Mars, e_Jupiter, e_Saturn, e_Uranus, e_Neptune };
+public enum E_Planets {Mercury = 1, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune };
 public enum E_PlayerState {e_Idle, e_Moving, e_AtPlanet};
 
 public class GameManager : MonoBehaviour {
@@ -12,8 +12,9 @@ public class GameManager : MonoBehaviour {
 	private int						previousPlanetIndex;
 	public int						planetInput;
 	// This array holds the number of days that it takes planets 1 - 8 to orbit the sun
-	public static int[] 			daysToOrbit = new int[] { 8, 23, 37, 69, 433, 10, 10, 10}; //{ 88, 225, 365, 687, 4333, 10756, 30687, 60190}
+	public static int[] 			daysToOrbit = new int[] { 12, 23, 37, 69, 433, 525, 815, 1000}; //{ 88, 225, 365, 687, 4333, 10756, 30687, 60190}
 	public static string[]			planets = new string[8] { "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" };
+	public Sprite[]					planetSprites;
 	public Transform				Sun;
 
 	public int 						fuel = 100;
