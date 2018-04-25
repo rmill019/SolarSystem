@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public enum E_Planets {Mercury = 1, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune };
-public enum E_PlayerState {e_Idle, e_Moving, e_AtPlanet};
+public enum E_Planets {Mercury = 0, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune };
+public enum E_PlayerState {Idle, Moving, AtPlanet};
 
 public class GameManager : MonoBehaviour {
 
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
 		DontDestroyOnLoad (S);
 	}
 
+
 	void Update () {
 
 		if (Input.GetKeyDown(KeyCode.KeypadEnter) && UIManager.S.missionStartText.gameObject.activeInHierarchy)
@@ -40,11 +41,6 @@ public class GameManager : MonoBehaviour {
 			DisplayTargetPlanet();
 			UIManager.S.targetPlanetText.gameObject.SetActive (true);
 			b_ActivateTimer = true;
-		}
-
-		if (b_ActivateTimer  && b_AwaitingInput)
-		{
-			planetInput = RecieveInput();
 		}
 	}
 
@@ -65,82 +61,13 @@ public class GameManager : MonoBehaviour {
 		// Choose the planet based on the index chosen and set the planets name to the Text Object to show the player.
 		string planet = planets[index];
 		UIManager.S.targetPlanetText.text += planet;
+
+		// Setting the Planet Image of the canvas to white and making it fully transparent before assigning the corresponding planet image.
+		Color white = Color.white;
+		white.a = 1f;
+		UIManager.S.planetImage.color = white;
+		UIManager.S.planetImage.sprite = planetSprites[index];
 	}
-
-	// Grab the planet that the player has chosen to go to
-	int RecieveInput ()
-	{
-		int input = 0;
-
-			if (Input.GetKeyDown(KeyCode.Keypad1))
-			{
-				input = 1;
-				b_ActivateTimer = false;
-				player.e_PlayerState = E_PlayerState.e_Moving;
-				b_AwaitingInput = false;
-				print ("Player chose: Mercury");
-			}
-			else if (Input.GetKeyDown(KeyCode.Keypad2))
-			{
-				input = 2;
-				b_ActivateTimer = false;
-				player.e_PlayerState = E_PlayerState.e_Moving;
-				b_AwaitingInput = false;
-				print ("Player chose: Venus");
-			}
-			else if (Input.GetKeyDown(KeyCode.Keypad3))
-			{
-				input = 3;
-				b_ActivateTimer = false;
-				player.e_PlayerState = E_PlayerState.e_Moving;
-				b_AwaitingInput = false;
-				print ("Player chose: Earth");
-			}
-			else if (Input.GetKeyDown(KeyCode.Keypad4))
-			{
-				input = 4;
-				b_ActivateTimer = false;
-				player.e_PlayerState = E_PlayerState.e_Moving;
-				b_AwaitingInput = false;
-				print ("Player chose: Mars");
-			}
-			else if (Input.GetKeyDown(KeyCode.Keypad5))
-			{
-				input = 5;
-				b_ActivateTimer = false;
-				player.e_PlayerState = E_PlayerState.e_Moving;
-				b_AwaitingInput = false;
-				print ("Player chose: Jupiter");
-			}
-			else if (Input.GetKeyDown(KeyCode.Keypad6))
-			{
-				input = 6;
-				b_ActivateTimer = false;
-				player.e_PlayerState = E_PlayerState.e_Moving;
-				b_AwaitingInput = false;
-				print ("Player chose: Saturn");
-			}
-			else if (Input.GetKeyDown(KeyCode.Keypad7))
-			{
-				input = 7;
-				b_ActivateTimer = false;
-				player.e_PlayerState = E_PlayerState.e_Moving;
-				b_AwaitingInput = false;
-				print ("Player chose: Uranus");
-			}
-			else if (Input.GetKeyDown(KeyCode.Keypad8))
-			{
-				input = 8;
-				b_ActivateTimer = false;
-				player.e_PlayerState = E_PlayerState.e_Moving;
-				b_AwaitingInput = false;
-				print ("Player chose: Neptune");
-			}
-		return input;
-	}
-
-
-
 
 
 }

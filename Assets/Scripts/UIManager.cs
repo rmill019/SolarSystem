@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour {
 	public Slider					timerSlider;
 	public Text						targetPlanetText;
 	public Text						missionStartText;
+	public Image					planetImage;
 
 	void Awake () {
 		if (!S)
@@ -28,6 +29,11 @@ public class UIManager : MonoBehaviour {
 		timerSlider.value = GameManager.S.timeToChoose;
 		
 		targetPlanetText.gameObject.SetActive (false);
+
+		// Assign the planetImage a color of white but set it's transparency to white
+		Color white = Color.white;
+		white.a = 0f;
+		planetImage.color = white;
 	}
 	
 	// Update is called once per frame

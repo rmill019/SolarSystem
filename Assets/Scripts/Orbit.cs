@@ -33,22 +33,16 @@ public class Orbit : MonoBehaviour {
 		transform.position = pos;
 	}
 
-	// void OnTriggerEnter (Collider coll)
-	// {
-	// 	float yPosition = 0f;
+	void OnTriggerEnter (Collider coll)
+	{
+		if (coll.gameObject.tag == "Player")
+		{
+			Debug.LogWarning ("Parenting Player to: " + gameObject.name);
+			coll.gameObject.GetComponent<TestPlayer>().playerState = E_PlayerState.AtPlanet;
+			coll.gameObject.transform.position = this.gameObject.transform.position + new Vector3 (0, 2, 0);
+			coll.gameObject.transform.SetParent (this.gameObject.transform);
 
-	// 	if (coll.gameObject.tag == "Player")
-	// 	{
-	// 		Debug.LogWarning ("Parenting Player to: " + gameObject.name);
-	// 		coll.gameObject.transform.position = this.gameObject.transform.position;
-	// 		coll.gameObject.transform.SetParent (this.gameObject.transform);
-
-	// 		// Rethink this calculation
-
-	// 		yPosition = GetComponent<SphereCollider>().bounds.extents.y + yOffset;
-	// 		Vector3 pos = coll.gameObject.transform.position;
-	// 		pos.y = yPosition;
-	// 		coll.gameObject.transform.position = pos;	
-	// 	}
-	// }
+			// Rethink this calculation
+		}
+	}
 }

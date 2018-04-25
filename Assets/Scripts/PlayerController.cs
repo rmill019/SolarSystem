@@ -15,14 +15,14 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		e_PlayerState = E_PlayerState.e_Idle;
+		e_PlayerState = E_PlayerState.Idle;
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (e_PlayerState == E_PlayerState.e_Idle)
+		if (e_PlayerState == E_PlayerState.Idle)
 		{
 			//print ("Idling");
 			IdleMovement();
