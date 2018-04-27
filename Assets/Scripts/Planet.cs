@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Orbit : MonoBehaviour {
+public class Planet : MonoBehaviour {
 
 	public float 			radius;
 	public E_Planets 		e_Planet;
@@ -14,8 +14,8 @@ public class Orbit : MonoBehaviour {
 	private int 			daysToOrbit;
 
 	void Start () {
-		daysToOrbit = GameManager.daysToOrbit [(int)e_Planet - 1];
-		print (gameObject.name + " e_planet: " + GameManager.daysToOrbit [(int)e_Planet - 1]);
+		daysToOrbit = GameManager.daysToOrbit [(int)e_Planet];
+		//print (gameObject.name + " e_planet: " + GameManager.daysToOrbit [(int)e_Planet - 1]);
 		//print (this.gameObject.name + ": " + daysToOrbit);
 		speed = (2 * Mathf.PI) / daysToOrbit;
 		angle = Random.Range (0, 360);

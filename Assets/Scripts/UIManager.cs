@@ -30,15 +30,30 @@ public class UIManager : MonoBehaviour {
 		
 		targetPlanetText.gameObject.SetActive (false);
 
-		// Assign the planetImage a color of white but set it's transparency to white
-		Color white = Color.white;
-		white.a = 0f;
-		planetImage.color = white;
+		ClearPlanetImage();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (GameManager.S.b_ActivateTimer)
 			timerSlider.value -= Time.deltaTime;
+	}
+
+	public void Refuel ()
+	{
+		fuelSlider.value = fuelSlider.maxValue;
+	}
+
+	public void ResetTimer ()
+	{
+		timerSlider.value = timerSlider.maxValue;
+	}
+
+	public void ClearPlanetImage()
+	{
+		// Assign the planetImage a color of white but set it's transparency to white
+		Color white = Color.white;
+		white.a = 0f;
+		planetImage.color = white;
 	}
 }

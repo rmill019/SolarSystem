@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 	public static GameManager		S;
 	public PlayerController			player;
 	private int						previousPlanetIndex;
-	public int						planetInput;
+	public int						targetPlanetIndex;
 	// This array holds the number of days that it takes planets 1 - 8 to orbit the sun
 	public static int[] 			daysToOrbit = new int[] { 12, 23, 37, 69, 433, 525, 815, 1000}; //{ 88, 225, 365, 687, 4333, 10756, 30687, 60190}
 	public static string[]			planets = new string[8] { "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune" };
@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
 	public float					timeToChoose;
 	public bool						b_ActivateTimer;
 	public bool						b_AwaitingInput = true;
+	public bool						b_GameActive = false;
 
 	void Awake () {
 		if (!S)
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.KeypadEnter) && UIManager.S.missionStartText.gameObject.activeInHierarchy)
 		{
+			b_GameActive = true;
 			UIManager.S.missionStartText.gameObject.SetActive (false);
 			DisplayTargetPlanet();
 			UIManager.S.targetPlanetText.gameObject.SetActive (true);
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour {
 		}while (index == previousPlanetIndex);
 
 		previousPlanetIndex = index;
+		targetPlanetIndex = index;
 
 		// Choose the planet based on the index chosen and set the planets name to the Text Object to show the player.
 		string planet = planets[index];
@@ -67,6 +70,13 @@ public class GameManager : MonoBehaviour {
 		white.a = 1f;
 		UIManager.S.planetImage.color = white;
 		UIManager.S.planetImage.sprite = planetSprites[index];
+	}
+
+	public void ResetTargetPlanetDisplay ()
+	{
+		UIManager.S.missionStartText.gameObject.SetActive (true);
+		UIManager.S.targetPlanetText.gameObject.SetActive (false);
+		UIManager.S.ClearPlanetImage();
 	}
 
 
