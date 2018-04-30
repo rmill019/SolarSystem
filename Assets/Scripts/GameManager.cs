@@ -72,11 +72,28 @@ public class GameManager : MonoBehaviour {
 		UIManager.S.planetImage.sprite = planetSprites[index];
 	}
 
+	public void DisplayChosenPlanet (int index)
+	{
+		string defaultText = "Traveling to: ";
+		UIManager.S.chosenPlanetText.text = defaultText;
+		UIManager.S.chosenPlanetText.text += planets[index];
+		// If the chosen planet text is not active then set it to active (visible)
+		if (!UIManager.S.chosenPlanetText.gameObject.activeInHierarchy)
+			UIManager.S.chosenPlanetText.gameObject.SetActive (true);
+
+		Color white = Color.white;
+		white.a = 1f;
+		UIManager.S.chosenPlanetImage.color = white;
+		UIManager.S.chosenPlanetImage.sprite = planetSprites[index];
+	}
+
 	public void ResetTargetPlanetDisplay ()
 	{
 		UIManager.S.missionStartText.gameObject.SetActive (true);
 		UIManager.S.targetPlanetText.gameObject.SetActive (false);
+		UIManager.S.chosenPlanetText.gameObject.SetActive (false);
 		UIManager.S.ClearPlanetImage();
+		UIManager.S.ClearChosenPlanetImage();
 	}
 
 

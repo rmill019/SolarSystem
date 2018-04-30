@@ -50,27 +50,31 @@ public class TestPlayer : MonoBehaviour {
 			//b_IsMoving = true;
 			playerState = E_PlayerState.Moving;
 			chosenPlanetIndex = 0;
+			GameManager.S.DisplayChosenPlanet (chosenPlanetIndex);
 		}
 		else if (Input.GetKeyDown(KeyCode.Keypad2))
 		{
 			GameManager.S.b_ActivateTimer = false;
 			//b_IsMoving = true;
 			playerState = E_PlayerState.Moving;
-			chosenPlanetIndex = 1; 
+			chosenPlanetIndex = 1;
+			GameManager.S.DisplayChosenPlanet (chosenPlanetIndex);
 		}
 		else if (Input.GetKeyDown(KeyCode.Keypad3))
 		{
 			GameManager.S.b_ActivateTimer = false;
 			//b_IsMoving = true;
 			playerState = E_PlayerState.Moving;
-			chosenPlanetIndex = 2; 
+			chosenPlanetIndex = 2;
+			GameManager.S.DisplayChosenPlanet (chosenPlanetIndex);
 		}
 		else if (Input.GetKeyDown(KeyCode.Keypad4))
 		{
 			GameManager.S.b_ActivateTimer = false;
 			//b_IsMoving = true;
 			playerState = E_PlayerState.Moving;
-			chosenPlanetIndex = 3; 
+			chosenPlanetIndex = 3;
+			GameManager.S.DisplayChosenPlanet (chosenPlanetIndex);
 		}
 		else if (Input.GetKeyDown(KeyCode.Keypad5)) 
 		{
@@ -78,27 +82,31 @@ public class TestPlayer : MonoBehaviour {
 			//b_IsMoving = true;
 			playerState = E_PlayerState.Moving;
 			chosenPlanetIndex = 4;
+			GameManager.S.DisplayChosenPlanet (chosenPlanetIndex);
 		}
 		else if (Input.GetKeyDown(KeyCode.Keypad6))
 		{
 			GameManager.S.b_ActivateTimer = false;
 			//b_IsMoving = true;
 			playerState = E_PlayerState.Moving;
-			chosenPlanetIndex = 5; 
+			chosenPlanetIndex = 5;
+			GameManager.S.DisplayChosenPlanet (chosenPlanetIndex);
 		}
 		else if (Input.GetKeyDown(KeyCode.Keypad7))
 		{
 			GameManager.S.b_ActivateTimer = false;
 			//b_IsMoving = true;
 			playerState = E_PlayerState.Moving;
-			chosenPlanetIndex = 6; 
+			chosenPlanetIndex = 6;
+			GameManager.S.DisplayChosenPlanet (chosenPlanetIndex);
 		}
 		else if (Input.GetKeyDown(KeyCode.Keypad8))
 		{
 			GameManager.S.b_ActivateTimer = false;
 			//b_IsMoving = true;
 			playerState = E_PlayerState.Moving;
-			chosenPlanetIndex = 7; 
+			chosenPlanetIndex = 7;
+			GameManager.S.DisplayChosenPlanet (chosenPlanetIndex);
 		}
 	}
 
