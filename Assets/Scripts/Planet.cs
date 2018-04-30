@@ -41,6 +41,7 @@ public class Planet : MonoBehaviour {
 			coll.gameObject.GetComponent<TestPlayer>().playerState = E_PlayerState.AtPlanet;
 			coll.gameObject.transform.position = this.gameObject.transform.position + new Vector3 (0, 2, 0);
 			coll.gameObject.transform.SetParent (this.gameObject.transform);
+			coll.gameObject.GetComponent<TestPlayer>().playerState = E_PlayerState.AtPlanet;
 
 			// Rethink this calculation
 		}

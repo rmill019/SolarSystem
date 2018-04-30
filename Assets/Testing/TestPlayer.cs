@@ -8,6 +8,7 @@ public class TestPlayer : MonoBehaviour {
 	private NavMeshAgent		agent;
 	public List<Transform>		planets;
 	public float 				accuracy;
+	public ParticleSystem		thrusters;
 
 	public E_PlayerState		playerState;
 
@@ -31,7 +32,11 @@ public class TestPlayer : MonoBehaviour {
 		if (playerState == E_PlayerState.Moving && chosenPlanetIndex != -1)
 		{
 			MoveTo (chosenPlanetIndex);
+			thrusters.Play();
 		}
+
+		if (playerState != E_PlayerState.Moving)
+			thrusters.Stop();
 	}
 
 	void MoveTo (int index)
